@@ -14,7 +14,6 @@ async function getTopRatedMovies() {
     }
 }
 
-
 getTopRatedMovies().then(data => {
 
 	let movies = [];
@@ -23,22 +22,17 @@ getTopRatedMovies().then(data => {
 		if ( item.vote_count >= 2000 && item.original_language == "en" ) movies.push(item)
 	})
 
-	console.log(movies)
-
 	movies.forEach((movie) => {
 
-	document.body.innerHTML = document.body.innerHTML + 
-		`<div class="card-group px-5 pt-5">
-			<div class="card">
+		document.getElementById("main-card-group").innerHTML = document.getElementById("main-card-group").innerHTML + 
+			`<div class="card m-5" style="width: 20rem; height: 50rem; overflow: hidden">
+				<img class="card-img-top" src="https://image.tmdb.org/t/p/original` + movie.poster_path + `" alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title">`+ movie.original_title + `</h5>
 					`+ movie.overview + `
 				</div>
-			</div>
-		</div>`
-
-	})
-
+			</div>`
+		})
 })
 
 
